@@ -1,0 +1,403 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    height: 100vh;
+    overflow: hidden;
+}
+.contenido {
+    position: absolute;
+    top: 100px;        
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*padding: 20px;       */
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.titulo-portal {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-left: 15px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.titulo-portal .lab {
+    color: #62DDFC;
+}
+
+.titulo-portal .piif {
+    color: #ffffff;
+}
+
+.grupo-izquierdo {
+    display: flex;
+    align-items: center;
+}
+
+/*CARD TITULO DE PROYECTOS*/
+.card-proyectos {
+    background-color: #eef3f3;
+    width: 100%;             /* Ocupar TODO el ancho */
+    margin: 0;               /* Quita espacios arriba y a los lados */
+    border-radius: 0;        /* Opcional: card pegada sin bordes */
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    gap: 20px;
+}
+
+
+.img-proyecto {
+    height: 60px;
+    object-fit: contain;
+    margin-left: 10px;
+}
+
+.titulo-proyecto {
+    font-size: 26px;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+    flex: 1; /* Esto centra el texto ocupando el espacio disponible */
+}
+
+
+.panel {
+    border-radius: 10px;
+    border-color: #ddd;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* CARD GENERAL */
+.card-portal {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+    margin: 20px auto;
+}
+
+/* CARD EN FORMATO HORIZONTAL */
+.card-horizontal {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+}
+
+/* LOGO */
+.card-logo img {
+    width: 95px;
+    height: 95px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* CONTENEDOR DEL TEXTO */
+.card-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* TÍTULO */
+.card-titulo {
+    font-size: 32px;
+    font-weight: 800;
+    color: #62DDFC; /* color Lab */
+    margin: 0;
+    line-height: 1.1;
+}
+
+.card-titulo span {
+    color: #152340; /* color PIIF */
+}
+
+/* DESCRIPCIÓN */
+.card-descripcion {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin-top: 10px;
+    line-height: 1.5;
+    max-width: 360px;
+}
+
+/* RESPONSIVIDAD */
+@media (max-width: 600px) {
+    .card-horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-texto {
+        align-items: center;
+    }
+
+    .card-titulo {
+        font-size: 26px;
+    }
+
+    .card-descripcion {
+        font-size: 14px;
+    }
+
+    .card-logo img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+
+
+
+
+/* Responsivo */
+@media (max-width: 600px) {
+    header {
+        height: 60px;
+    }
+    .usuario .info {
+        font-size: 12px;
+    }
+}
+
+/*Oculta el nombre del portal en pantallas pequeñas*/
+@media (max-width: 600px) {
+    .titulo-portal {
+        display: none;
+    }
+}
+
+/*Oculta la información del usuario en pantallas pequeñas*/
+@media (max-width: 600px) {
+    .usuario .info {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .card-proyectos {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .img-proyecto {
+        width: 40px;
+        height: 40px;
+    }
+
+    .titulo-proyecto {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        background-image: none !important; 
+        background-color: #152340 !important; 
+    }
+
+    .grupo-izquierdo .logo {
+        content: url('../img/100anios.png');
+    }
+
+    .grupo-izquierdo .bml {
+        display: block;
+        height: 40px;
+    }
+
+    .contenido {
+        top: 60px; 
+        padding: 15px;
+    }
+
+    .logo{
+        height: 65px;
+    }
+
+}
+
+
+
+/*CONTENIDO*/
+/* ========== CARD PRINCIPAL ========== */
+.card-principal {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  /*max-width: 600px;*/
+  margin: 0 auto;
+  text-align: center;
+}
+
+.card-principal img {
+  width: 90px;
+  margin-bottom: 10px;
+}
+
+.card-principal h1 {
+  margin: 10px 0 5px;
+  font-size: 28px;
+  color: #003b5c;
+  font-weight: bold;
+}
+
+.card-principal p {
+  font-size: 15px;
+  color: #3a3a3a;
+}
+
+/* ========== TABS ========== */
+.tabs-container {
+  max-width: 1000px;
+  margin: 30px auto 0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  border-bottom: 2px solid #dcdcdc;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #003b5c;
+  border-bottom: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.tab.activa {
+  border-color: #04b3bb;
+  color: #04b3bb;
+}
+
+.tab:hover {
+  color: #04b3bb;
+}
+
+/* ========== CONTENIDO DE TABS ========== */
+.contenido-tab {
+  display: none;
+}
+
+.contenido-tab.activo {
+  display: block;
+}
+
+/* ========== BUSCADOR + BOTÓN NUEVO ========== */
+.contenedor-controles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.input-busqueda {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn-nuevo {
+  background: #04b3bb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-nuevo:hover {
+  background: #049fa7;
+}
+
+/* ========== CARDS DE PROYECTOS ========== */
+.grid-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card-proyecto {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.card-proyecto h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #003b5c;
+}
+
+.card-proyecto p {
+  margin: 8px 0 35px;
+  color: #444;
+  font-size: 14px;
+}
+
+/* ========== BOTÓN HAMBURGUESA ========== */
+.menu-card {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.menu-btn-proyecto {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.opciones-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.opciones-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+.opciones-menu button:hover {
+  background: #f0f0f0;
+}
