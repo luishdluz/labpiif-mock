@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal Interactivo de Información Financiera</title>
+    
+    <!-- Contenedor -->
+    <link rel="stylesheet" href="css/contenedor_app.css">
+    <!-- Inicio -->
+    <link rel="stylesheet" href="css/inicio.css">
+    <!-- Laboratorio -->
+    <link rel="stylesheet" href="css/laboratorio.css">
+    <!-- CSS Header -->
+    <link rel="stylesheet" href="css/header.css">
+  </head>
+  <body>
+
+    <!--Header de la aplicación -->
+    <header>
+      <div class="grupo-izquierdo">
+        <img src="img/logoBM-Mblanco.png" alt="Banco de México" class="bml" />
+        <img src="img/logo1.png" alt="Banco de Mexico" class="logo" />
+      </div>
+      <div class="usuario">
+        <!-- Bonones de accion -->
+        <div class="botones-header desktop-only botones">
+          <a href="index.html" title="Inicio"> 
+            <img src="img/home.svg" alt="Inicio" data-imgtype="d" width="30" height="30"> 
+          </a>
+          <a href="#" title="Cerrar sesión"> 
+            <img src="img/salir.svg" alt="Cerrar sesión" data-imgtype="d" width="30" height="30"> 
+          </a>
+        </div>
+        <!-- Informacion de usuario -->
+        <div class="usuario-main">
+          <div class="info">
+            <div class="nombre-usuario">Luis Antonio Hernández De La Luz</div>
+            <div class="nombre-usuario">B16847 - 002001</div>
+          </div>
+          <img src="img/b16847.png" alt="Usuario" class="foto-usuario">
+        </div>
+      </div>
+    </header>
+
+
+    <div class="contenedor-app">
+
+  <!-- Botón hamburguesa móvil -->
+  <button class="btn-hamburguesa">☰</button>
+
+  <div class="layout">
+
+    <!-- PANEL IZQUIERDO -->
+    <aside class="panel-fuentes">
+
+      <div class="tabs">
+        <button class="tab active" data-tab="institucionales">Institucionales</button>
+        <button class="tab" data-tab="locales">Locales</button>
+      </div>
+
+      <!-- INSTITUCIONALES -->
+      <div id="institucionales" class="tab-panel active">
+
+        <button class="btn-agregar-fuente" id="agregarFuenteInstitucional">
+          + Agregar fuente institucional
+        </button>
+
+        <input type="text" class="buscador" placeholder="Buscar fuente institucional...">
+
+        <div class="lista-fuentes-contenedor">
+          <div class="lista-fuentes fuentesInstitucionales"></div>
+        </div>
+
+      </div>
+
+      <!-- LOCALES -->
+      <div id="locales" class="tab-panel">
+
+        <button class="btn-agregar-fuente" id="agregarFuenteLocal">
+          + Subir archivo
+        </button>
+
+        <input type="text" class="buscador" placeholder="Buscar archivo...">
+
+        <div class="lista-fuentes-contenedor">
+          <div class="lista-fuentes fuentesLocales"></div>
+        </div>
+
+      </div>
+
+    </aside>
+
+    <!-- PANEL NOTEBOOK -->
+    <section class="panel-notebook">
+
+      <div class="acciones">
+        <button class="btn-accion btn-play-global" data-tooltip="Ejecutar todo">
+          <img src="img/play.png">
+        </button>
+
+        <button class="btn-accion" id="btnAgregarCodigo" data-tooltip="Agregar código">
+          <img src="img/code.png">
+        </button>
+
+        <button class="btn-accion" id="btnAgregarTexto" data-tooltip="Agregar texto">
+          <img src="img/text.png">
+        </button>
+
+        <button class="btn-accion btn-eliminar-global" data-tooltip="Eliminar celda">
+          <img src="img/delete.png">
+        </button>
+      </div>
+
+      <div id="notebook-scroll"></div>
+
+    </section>
+
+  </div>
+
+</div>
+
+<!-- MODAL FUENTES -->
+<div class="modal-overlay" id="modalFuentes">
+  <div class="modal-contenido">
+    <h3>Catálogo de Fuentes</h3>
+
+    <div class="tabla-responsive">
+      <table class="tabla-fuentes" id="tablaFuentes">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <button id="cerrarModalFuentes" class="modal-cerrar">Cerrar</button>
+  </div>
+</div>
+
+<!-- MODAL ARCHIVO -->
+<div class="modal-archivo oculto" id="modalArchivo">
+  <div class="modal-contenido">
+    <h2>Agregar archivo</h2>
+
+    <label>Nombre (opcional)</label>
+    <input type="text" id="nombreArchivoManual">
+
+    <label>Archivo</label>
+    <input type="file" id="archivoLocal">
+
+    <div class="modal-acciones">
+      <button class="btn-cancelar" id="btnCancelarArchivo">Cancelar</button>
+      <button class="btn-confirmar" id="btnAgregarArchivo">Agregar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <!-- Script locales -->
+  <script src="js/header.js"></script>
+  <script src="js/inicio.js"></script>
+
+
+  <!-- CSS de Quill -->
+<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+
+<!-- JS de Quill -->
+<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.41.0/min/vs/loader.js"></script>
+<script>
+  require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.41.0/min/vs' }});
+  require(['vs/editor/editor.main'], function() {
+    const celdasCodigo = document.querySelectorAll('.celda-codigo .editor');
+    const editores = [];
+
+    const editor1 = monaco.editor.create(document.getElementById('editor-1'), {
+    value: `# Código por default: suma de 2 números
+x = 5
+y = 7
+print(f"Suma: {x + y})`,
+    language: 'python',
+    theme: 'vs-light',
+    automaticLayout: true,
+    minimap: { enabled: false }
+  });
+
+    const editor2 = monaco.editor.create(document.getElementById('editor-2'), {
+    value: `# Gráfica de ejemplo
+x = [1,2,3,4]
+y = [10,20,15,30]
+plt.plot(x,y)
+plt.show()
+`,
+    language: 'python',
+    theme: 'vs-light',
+    automaticLayout: true,
+    minimap: { enabled: false }
+  });
+
+
+
+    const btnPlayGlobal = document.querySelector('.btn-play-global');
+    let celdaActivaIndex = 0;
+
+    document.querySelectorAll('.celda').forEach((celda, i) => {
+      celda.addEventListener('click', () => {
+        celdaActivaIndex = i;
+        document.querySelectorAll('.celda').forEach(c => c.classList.remove('activa'));
+        celda.classList.add('activa');
+      });
+    });
+
+    
+  });
+</script>
+
+  <script src="js/laboratorio.js"></script>
+
+  </body>
+</html>
