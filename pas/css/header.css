@@ -195,10 +195,6 @@ header .botones a:hover, .btn-config:hover {
         height: 60px;
     }
 
-    .grupo-izquierdo .logo {
-        content: url('../img/100anios.png');
-    }
-
     .grupo-izquierdo .bml {
         display: block;
         height: 40px;
@@ -211,7 +207,6 @@ header .botones a:hover, .btn-config:hover {
 
     .logo{
         height: 65px;
-        display: none;
     }
 
     /* Ocultar nombre y clave */

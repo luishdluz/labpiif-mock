@@ -211,9 +211,6 @@ body {
         background-color: #152340 !important; 
     }
 
-    .grupo-izquierdo .logo {
-        content: url('../img/100anios.png');
-    }
 
     .grupo-izquierdo .bml {
         display: block;
