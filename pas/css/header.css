@@ -206,7 +206,8 @@ header .botones a:hover, .btn-config:hover {
     }
 
     .logo{
-        height: 65px;
+        height: 50px;
+        width: 180px;
     }
 
     /* Ocultar nombre y clave */
